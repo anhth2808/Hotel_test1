@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6dcb87f3529a42afaa21e0c5897f60c6" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="HOTEL3Model.ADMIN" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.BILL" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.BILLPAY" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.BOOKING" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.CUSTOMER" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.PAYTYPE" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.RENT" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.ROOM" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.ROOMTYPE" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTEL3Model.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="HOTEL3Model.FK__BILL__BillPay_id__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BILL__Booking_id__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BILL__Rent_id__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BILLPAY__Custome__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BILLPAY__PayType__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BOOKING__Custome__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__BOOKING__Room_id__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__RENT__RoomType_i__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTEL3Model.FK__ROOM__RoomType_i__0CBAE877" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
