@@ -249,6 +249,7 @@
     <Compile Include="Models\ROOMTYPE.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoomtypeRentViewModel.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -268,6 +269,56 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\bg_1.jpg" />
+    <Content Include="images\bg_2.jpg" />
+    <Content Include="images\image_1.jpg" />
+    <Content Include="images\image_2.jpg" />
+    <Content Include="images\image_3.jpg" />
+    <Content Include="images\image_4.jpg" />
+    <Content Include="images\image_5.jpg" />
+    <Content Include="images\image_6.jpg" />
+    <Content Include="images\image_7.jpg" />
+    <Content Include="images\image_8.jpg" />
+    <Content Include="images\insta-1.jpg" />
+    <Content Include="images\insta-2.jpg" />
+    <Content Include="images\insta-3.jpg" />
+    <Content Include="images\insta-4.jpg" />
+    <Content Include="images\insta-5.jpg" />
+    <Content Include="images\menu-1.jpg" />
+    <Content Include="images\menu-2.jpg" />
+    <Content Include="images\menu-3.jpg" />
+    <Content Include="images\menu-4.jpg" />
+    <Content Include="images\menu-5.jpg" />
+    <Content Include="images\menu-6.jpg" />
+    <Content Include="images\menu-7.jpg" />
+    <Content Include="images\menu-8.jpg" />
+    <Content Include="images\person_1.jpg" />
+    <Content Include="images\person_2.jpg" />
+    <Content Include="images\person_3.jpg" />
+    <Content Include="images\person_4.jpg" />
+    <Content Include="images\room-1.jpg" />
+    <Content Include="images\room-2.jpg" />
+    <Content Include="images\room-3.jpg" />
+    <Content Include="images\room-4.jpg" />
+    <Content Include="images\room-5.jpg" />
+    <Content Include="images\room-6.jpg" />
+    <Content Include="images\rt01-1.jpg" />
+    <Content Include="images\rt01-2.jpg" />
+    <Content Include="images\rt01-3.jpg" />
+    <Content Include="images\rt01-4.jpg" />
+    <Content Include="images\rt01-5.jpg" />
+    <Content Include="images\rt01-6.jpg" />
+    <Content Include="images\rt02-1.jpg" />
+    <Content Include="images\rt02-2.jpg" />
+    <Content Include="images\rt02-3.jpg" />
+    <Content Include="images\rt02-4.jpg" />
+    <Content Include="images\rt02-5.jpg" />
+    <Content Include="images\rt02-6.jpg" />
+    <Content Include="images\staff-1.jpg" />
+    <Content Include="images\staff-2.jpg" />
+    <Content Include="images\staff-3.jpg" />
+    <Content Include="images\staff-4.jpg" />
     <Content Include="Models\HotelModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HotelModel.edmx</DependentUpon>
@@ -341,7 +392,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Contact.cshtml" />
-    <Content Include="Views\Test\Rooms.cshtml" />
+    <Content Include="Views\Test\Roomtypes.cshtml" />
+    <Content Include="Views\Test\RoomtypeDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,7 +401,6 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\js\" />
     <Folder Include="Content\scss\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

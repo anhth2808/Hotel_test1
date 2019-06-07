@@ -8,6 +8,7 @@ namespace Hotel_test1.Controllers
 {
     public class HomeController : Controller
     {
+        /*
         public ActionResult Index()
         {
             return View();
@@ -26,5 +27,6 @@ namespace Hotel_test1.Controllers
 
             return View();
         }
+        */
     }
 }
