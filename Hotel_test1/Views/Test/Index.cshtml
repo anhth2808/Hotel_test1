@@ -1,7 +1,14 @@
-﻿
+﻿@section Styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/RoomtypeDetail.css")">
+}
+
+@using Hotel_test1.Models
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var roomtypeData = ViewBag.roomtypeData as IEnumerable<Hotel_test1.Models.ROOMTYPE>;
 }
 
 <section class="home-slider owl-carousel">
@@ -38,67 +45,46 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <form action="#" class="booking-form">
+                <form action="/" method="post" class="booking-form">
                     <div class="row">
                         <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Check-in Date</label>
-                                    <input type="text" class="form-control checkin_date" placeholder="Check-in date">
+                                    <label for="check_in_date">Ngày nhận phòng</label>
+                                    <input name="check_in_date" type="text" class="form-control checkin_date" placeholder="Check-in date">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Check-out Date</label>
-                                    <input type="text" class="form-control checkout_date" placeholder="Check-out date">
+                                    <label for="check_out_date">Ngày trả phòng</label>
+                                    <input name="check_out_date" type="text" class="form-control checkout_date" placeholder="Check-out date">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Room</label>
+                                    <label for="#">Loại phòng</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Suite</option>
-                                                <option value="">Family Room</option>
-                                                <option value="">Deluxe Room</option>
-                                                <option value="">Classic Room</option>
-                                                <option value="">Superior Room</option>
-                                                <option value="">Luxury Room</option>
+                                            <select name="roomtype" id="" class="form-control">
+                                                @foreach(var rt in roomtypeData)
+                                                {
+                                                    <option value="">@rt.RType</option>
+                                                }                                                
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md d-flex">
-                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
-                                <div class="wrap">
-                                    <label for="#">Customer</label>
-                                    <div class="form-field">
-                                        <div class="select-wrap">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1 Adult</option>
-                                                <option value="">2 Adult</option>
-                                                <option value="">3 Adult</option>
-                                                <option value="">4 Adult</option>
-                                                <option value="">5 Adult</option>
-                                                <option value="">6 Adult</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-md d-flex">
                             <div class="form-group d-flex align-self-stretch">
-                                <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch">
+                                <input type="submit" value="Tìm kiếm" class="btn btn-primary py-3 px-4 align-self-stretch">
                             </div>
                         </div>
                     </div>
@@ -121,12 +107,12 @@
                 <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
                     <div class="ml-md-0">
                         <span class="subheading">Welcome to Deluxe Hotel</span>
-                        <h2 class="mb-4">Welcome To Our Hotel</h2>
+                        <h2 class="mb-4">Cảm ơn qui khách đã ghé thăm</h2>
                     </div>
                 </div>
                 <div class="pb-md-5">
-                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                    <p>Sẵn phòng đẹp đáp ứng mọi nhu cầu. Tư vấn 24/7 kể cả 2h sáng. Hệ thống KS rộng khắp VN. Thanh toán an toàn. Không cần thẻ tín dụng. Không phụ thu. Xem ngay! Đầy ắp ưu đãi từ đối tác. Giảm ngay 2O% với Top KS. Đặt KS tích điểm đổi quà. Có deal phòng đẹp dịp Hè.</p>
+                    <p>Khách sạn đa dạng, nhiều ưu đãi giảm giá và đặc biệt không thu phí giao dịch. Đặt phòng rẻ nhất với Traveloka. Không phí giao dịch, thanh toán đa dạng! Thuận tiện. Sẵn có 24 giờ. Thanh toán đa dạng.</p>
                     <ul class="ftco-social d-flex">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -151,7 +137,7 @@
                     </div>
                     <div class="media-body p-2 mt-2">
                         <h3 class="heading mb-3">25/7 Front Desk</h3>
-                        <p>A small river named Duden flows by their place and supplies.</p>
+                        <p>Quầy lễ tân chuyên nghiệp phục vụ 25/7</p>
                     </div>
                 </div>
             </div>
@@ -164,7 +150,7 @@
                     </div>
                     <div class="media-body p-2 mt-2">
                         <h3 class="heading mb-3">Restaurant Bar</h3>
-                        <p>A small river named Duden flows by their place and supplies.</p>
+                        <p>Khu nhà hàng cao cấp sẵn sàng phục vụ khách hàng</p>
                     </div>
                 </div>
             </div>
@@ -177,7 +163,7 @@
                     </div>
                     <div class="media-body p-2 mt-2">
                         <h3 class="heading mb-3">Transfer Services</h3>
-                        <p>A small river named Duden flows by their place and supplies.</p>
+                        <p>Dịch vụ vân chuyển, đưa đón khách hàng.</p>
                     </div>
                 </div>
             </div>
@@ -190,7 +176,7 @@
                     </div>
                     <div class="media-body p-2 mt-2">
                         <h3 class="heading mb-3">Spa Suites</h3>
-                        <p>A small river named Duden flows by their place and supplies.</p>
+                        <p>Dịch vụ spa chuyên nghiệp luôn sãn sàng phục vụ</p>
                     </div>
                 </div>
             </div>
@@ -359,9 +345,9 @@
                                         </span>
                                     </div>
                                     <div class="text text-center">
-                                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                        <p class="name">Nathan Smith</p>
-                                        <span class="position">Guests</span>
+                                        <p class="mb-4">Khá tốt cho ai muốn nghỉ ngơi yên tĩnh, view biển khá đẹp</p>
+                                        <p class="name">Trọn Nhân</p>
+                                        <span class="position">Khách hàng</span>
                                     </div>
                                 </div>
                             </div>
@@ -373,9 +359,9 @@
                                         </span>
                                     </div>
                                     <div class="text text-center">
-                                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                        <p class="name">Nathan Smith</p>
-                                        <span class="position">Guests</span>
+                                        <p class="mb-4">Không nghĩ đến chất lượng lại vượt trội so với giá như vậy, rất hài lòng</p>
+                                        <p class="name">Đoàn dự</p>
+                                        <span class="position">Khách hàng</span>
                                     </div>
                                 </div>
                             </div>
@@ -387,9 +373,9 @@
                                         </span>
                                     </div>
                                     <div class="text text-center">
-                                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                        <p class="name">Nathan Smith</p>
-                                        <span class="position">Guests</span>
+                                        <p class="mb-4">Chất lượng khách sạn rất tốt, phù hợp với ở lại lâu dài</p>
+                                        <p class="name">Hữu Lâm</p>
+                                        <span class="position">Khách hàng</span>
                                     </div>
                                 </div>
                             </div>
@@ -401,9 +387,9 @@
                                         </span>
                                     </div>
                                     <div class="text text-center">
-                                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                        <p class="name">Nathan Smith</p>
-                                        <span class="position">Guests</span>
+                                        <p class="mb-4">Thật sự rất hài lòng với dịch vụ của khách sạn</p>
+                                        <p class="name">Nhật Hạ</p>
+                                        <span class="position">Khách hàng</span>
                                     </div>
                                 </div>
                             </div>
@@ -415,9 +401,9 @@
                                         </span>
                                     </div>
                                     <div class="text text-center">
-                                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                                        <p class="name">Nathan Smith</p>
-                                        <span class="position">Guests</span>
+                                        <p class="mb-4">Chất lượng tốt mà giá lại phải chăng.</p>
+                                        <p class="name">Minh Trí</p>
+                                        <span class="position">Khách hàng</span>
                                     </div>
                                 </div>
                             </div>
@@ -499,4 +485,32 @@
 </section>
 
 
+@{
+    string display = "";
+    if (ViewBag.isExist == true)
+    {
+        display = "block";
 
+    }
+    else
+    {
+        display = "none";
+    }
+
+
+    <div class="modal" id="booking-form" style="display: @display;">
+        <form class="modal-content animate" action="/new" method="post">
+            <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
+            <div class="container">
+                <label for="dateTime"><b>Date</b></label>
+                <input class="datetimepicker form-control" type="text" name="dateTime" autocomplete="off">
+                <label for="note"><b>Note</b></label>
+                <input class="form-control" type="text" name="note" autocomplete="off">
+                <label for="cost"><b>Cost</b></label>
+                <input class="form-control" type="text" name="cost" autocomplete="off">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+}

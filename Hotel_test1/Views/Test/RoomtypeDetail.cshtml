@@ -1,4 +1,8 @@
-﻿
+﻿@section Styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/RoomtypeDetail.css")">
+}
+
+
 @model Hotel_test1.Models.ROOMTYPE
 @{
     ViewBag.Title = "RoomtypeDetail";
@@ -29,6 +33,13 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-md-12 ftco-animate">
+                        <div class="container">
+                            <div class="btn btn-primary btn-lg add-new-report" id="add-report" role="button" title="Add new report" data-toggle="tooltip" data-placement="right">
+                                <span onclick="document.getElementById('booking-form').style.display = 'block'">
+                                    Đặt phòng ngay
+                                </span>
+                            </div>
+                        </div>
                         <h2 class="mb-4">@Html.DisplayFor(model => model.RType)</h2>
                         <div class="single-slider owl-carousel">
                             @foreach (string img in listImg)
@@ -221,3 +232,17 @@
 </section> <!-- .section -->
 
 
+<div class="modal" id="booking-form">
+    <form class="modal-content animate" action="/new" method="post">
+        <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
+        <div class="container">
+            <label for="dateTime"><b>Date</b></label>
+            <input class="datetimepicker form-control" type="text" name="dateTime" autocomplete="off">
+            <label for="note"><b>Note</b></label>
+            <input class="form-control" type="text" name="note" autocomplete="off">
+            <label for="cost"><b>Cost</b></label>
+            <input class="form-control" type="text" name="cost" autocomplete="off">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
