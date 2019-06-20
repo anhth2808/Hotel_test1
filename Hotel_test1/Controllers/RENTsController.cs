@@ -14,6 +14,15 @@ namespace Hotel_test1.Controllers
     {
         private HOTEL3Entities db = new HOTEL3Entities();
 
+        string createId()
+        {
+            var max = db.RENTs.ToList().Select(n => n.Rent_id).Max();
+            int id = int.Parse(max.Substring(2)) + 1;
+            string type = String.Concat("00", id.ToString());
+            return "R" + type.Substring(id.ToString().Length - 1);
+        }
+
+
         // GET: RENTs
         public ActionResult Index()
         {
@@ -52,6 +61,7 @@ namespace Hotel_test1.Controllers
         {
             if (ModelState.IsValid)
             {
+                rENT.Rent_id = createId();
                 db.RENTs.Add(rENT);
                 db.SaveChanges();
                 return RedirectToAction("Index");
