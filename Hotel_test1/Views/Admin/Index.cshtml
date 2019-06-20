@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<fieldset>
+
+    @if (Session["AdminName"] != null)
+    {
+        <p>
+            Welcome @Session["AdminName"].ToString();
+        </p>
+    }
+</fieldset>

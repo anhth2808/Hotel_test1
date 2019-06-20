@@ -1,0 +1,82 @@
+﻿@model Hotel_test1.Models.ROOMTYPE
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ROOMTYPE</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Descriptions)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Images)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Images)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Views)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Views)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Bed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Bed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxPerson)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxPerson)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Size)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Size)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.RoomType_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
