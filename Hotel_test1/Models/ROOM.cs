@@ -19,7 +19,7 @@ namespace Hotel_test1.Models
         {
             this.BOOKINGs = new HashSet<BOOKING>();
         }
-    
+        
         public string Room_id { get; set; }
         public string RoomType_id { get; set; }
     

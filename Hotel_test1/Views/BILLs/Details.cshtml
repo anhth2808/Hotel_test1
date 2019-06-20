@@ -1,0 +1,51 @@
+﻿@model Hotel_test1.Models.BILL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BILL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BILLPAY.PayType_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILLPAY.PayType_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.Customer_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.Customer_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RENT.RoomType_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RENT.RoomType_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Bill_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

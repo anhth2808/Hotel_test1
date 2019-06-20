@@ -14,6 +14,16 @@ namespace Hotel_test1.Controllers
     {
         private HOTEL3Entities db = new HOTEL3Entities();
 
+
+        string createId()
+        {
+            var max = db.ROOMTYPEs.ToList().Select(n => n.RoomType_id).Max();
+            int id = int.Parse(max.Substring(2)) + 1;
+            string type = String.Concat("0", id.ToString());
+            return "RT" + type.Substring(id.ToString().Length - 1);
+        }
+
+
         // GET: ROOMTYPEs
         public ActionResult Index()
         {
@@ -46,10 +56,26 @@ namespace Hotel_test1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomType_id,RType,Descriptions,Images,Views,Bed,MaxPerson,Size")] ROOMTYPE rOOMTYPE)
+        public ActionResult Create(HttpPostedFileBase[] files, [Bind(Include = "RoomType_id,RType,Descriptions,Images,Views,Bed,MaxPerson,Size")] ROOMTYPE rOOMTYPE)
         {
+            List<string> listImg = new List<string>();
+
             if (ModelState.IsValid)
             {
+
+                foreach (HttpPostedFileBase file in files)
+                {
+                    if (file != null)
+                    {
+                        string postedFileName = System.IO.Path.GetFileName(file.FileName);
+                        var path = System.IO.Path.Combine(Server.MapPath("/images/" + postedFileName));
+                        listImg.Add(postedFileName);
+                        file.SaveAs(path);
+                    }
+                }
+
+                rOOMTYPE.RoomType_id = createId();
+                rOOMTYPE.Images = string.Join(",", listImg);
                 db.ROOMTYPEs.Add(rOOMTYPE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,22 +96,40 @@ namespace Hotel_test1.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(rOOMTYPE);
         }
+   
 
         // POST: ROOMTYPEs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomType_id,RType,Descriptions,Images,Views,Bed,MaxPerson,Size")] ROOMTYPE rOOMTYPE)
+        public ActionResult Edit(HttpPostedFileBase[] files, [Bind(Include = "RoomType_id,RType,Descriptions,Images,Views,Bed,MaxPerson,Size")] ROOMTYPE rOOMTYPE)
         {
+            List<string> listImg = new List<string>();
+
+           
             if (ModelState.IsValid)
             {
+                foreach (HttpPostedFileBase file in files)
+                {
+                    if (file != null)
+                    {
+                        string postedFileName = System.IO.Path.GetFileName(file.FileName);
+                        var path = System.IO.Path.Combine(Server.MapPath("/images/" + postedFileName));
+                        listImg.Add(postedFileName);
+                        file.SaveAs(path);
+                    }
+                }
+                //rOOMTYPE.Images = string.Join(",", listImg);
+
                 db.Entry(rOOMTYPE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(rOOMTYPE);
         }
 

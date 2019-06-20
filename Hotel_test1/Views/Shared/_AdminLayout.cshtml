@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-datepicker.css")">
     <link rel="stylesheet" href="@Url.Content("~/Content/css/jquery.timepicker.css")">
 
-
+    <link rel="stylesheet" href="@Url.Content("~/Content/admin/admin-style.css")">
+     
     <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")">
 
 
@@ -41,11 +42,35 @@
                     <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nhanvienMenu">Loại phòng</a>
                     <div class="dropdown-menu" aria-labelledby="nhanvienMenu"><a class="dropdown-item" href="/ROOMTYPEs/Index">Danh sách loại phòng</a><a class="dropdown-item" href="/ROOMTYPEs/Create">Thêm loại phòng</a></div>
                 </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Giá phòng</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/RENTs/Index">Danh sách giá phòng</a><a class="dropdown-item" href="/RENTs/Create">Thêm giá phòng</a></div>
+                </div>
             </li>            
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Phương thức thanh toán</a>
                     <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/PAYTYPEs/Index">Danh sách phương thức thanh toán</a><a class="dropdown-item" href="/PAYTYPEs/Create">Thêm phương thức thanh toán</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">BOOKING</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/BoOKINGs/Index">Danh sách BOOKING</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Khách hàng</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/CUSTOMERs/Index">Danh sách phương khách hàng</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Hóa đơn</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/BILLs/Index">Danh sách hóa đơn</a></div>
                 </div>
             </li>
             <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
@@ -63,6 +88,11 @@
     <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
 
     <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
-    <script src="@Url.Content("~/Content/js/main.js")"></script>
+    <script src="@Url.Content("~/Content/admin/admin-script.js")"></script>
+
+    <!--
+    <script src="@Url.Content("~/Content/js/main.js")"></script>        
+    -->
+
 </body>
 </html>

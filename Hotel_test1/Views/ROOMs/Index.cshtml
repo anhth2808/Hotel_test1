@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Room_id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ROOMTYPE.RType)
         </th>
         <th></th>
@@ -20,6 +23,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room_id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ROOMTYPE.RType)
         </td>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Hotel_test1.Models.RENT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROOMTYPE.RType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.From_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.To_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROOMTYPE.RType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Rent_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Rent_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Rent_id })
+        </td>
+    </tr>
+}
+
+</table>
