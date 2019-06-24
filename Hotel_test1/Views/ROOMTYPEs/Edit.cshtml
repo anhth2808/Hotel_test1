@@ -37,7 +37,7 @@
 
 
 
-@using (Html.BeginForm("Edit", "ROOMTYPEs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "ROOMTYPEs", FormMethod.Post, new { id= "edit", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -58,7 +58,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Descriptions, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+                <textarea form="edit" name="Descriptions">@Model.Descriptions</textarea>
+                <!--
+                @Html.EditorFor(model => model.Descriptions, new { htmlAttributes = new { @class = "form-control input-description" } })
+                    -->
+                
                 @Html.ValidationMessageFor(model => model.Descriptions, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +70,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Images, new { htmlAttributes = new {@readonly= "readonly", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
                 <input type="file" style="height:30px;" multiple="multiple" id="files" name="files" accept="image/*" />                
             </div>
