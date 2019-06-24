@@ -1,7 +1,7 @@
 ﻿@model Hotel_test1.Models.RENT
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Chỉnh sửa giá phòng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,7 +10,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>RENT</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Rent_id)
@@ -27,7 +26,8 @@
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsActive)
+                    Đang sử dụng @Html.RadioButtonFor(model => model.IsActive, "True", new { @checked = "checked" }) &nbsp;
+                    Không sử dụng @Html.RadioButtonFor(model => model.IsActive, "False")
                     @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -41,6 +41,7 @@
                 <!--
                 <input name="from_date" type="text" class="form-control from_date" placeholder="From date">
                  -->
+
                 @Html.ValidationMessageFor(model => model.From_Date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,12 +67,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Lưu" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

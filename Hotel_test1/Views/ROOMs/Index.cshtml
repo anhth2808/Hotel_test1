@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Hotel_test1.Models.ROOM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách phòng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "Room_id", rowsPerPage: 3);
 }
@@ -18,13 +18,9 @@
             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
             grid.Column("Room_id", "Mã phòng"),
             grid.Column("ROOMTYPE.RType", "Loại phòng"),
-            grid.Column("Chức năng", format: @<text>
+            grid.Column("", format: @<text>
                 <a href="/ROOMs/Edit/@item.Room_id">
                     <i class='fas fa-edit' title='Edit' id='Edit'></i>
-                </a>
-                &nbsp;|&nbsp;
-                <a href="/ROOMs/Details/@item.Room_id">
-                    <i class='fas fa-list-alt' title='Details' id='Details'></i>
                 </a>
                 &nbsp;|                
                 <form action="/ROOMs/Delete/@item.Room_id" method="POST" class="btn-delete">

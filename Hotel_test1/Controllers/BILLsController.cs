@@ -17,7 +17,41 @@ namespace Hotel_test1.Controllers
         // GET: BILLs
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
             var bILLs = db.BILLs.Include(b => b.BILLPAY).Include(b => b.BOOKING).Include(b => b.RENT);
+
+            /*
+            List<BillDetailViewModel> bd = new List<BillDetailViewModel>();
+
+            var data = bILLs.ToList();
+            foreach(var i in data)
+            {
+                BillDetailViewModel temp = new BillDetailViewModel();
+                temp.BillPay_id = i.BillPay_id;
+                temp.Date = i.BILLPAY.Date;
+                temp.Booking_id = i.Booking_id;
+                temp.CustomerFirstName = i.BOOKING.CUSTOMER.CustomerFirstName;
+                temp.CustomerLastName = i.BOOKING.CUSTOMER.CustomerLastName;
+                temp.Room_id = i.BOOKING.Room_id;
+                temp.RType = i.BOOKING.ROOM.ROOMTYPE.RType;
+                temp.Price = i.RENT.Price;
+                temp.Check_in_date = i.BOOKING.Check_in_date;
+                temp.Check_out_date = i.BOOKING.Check_out_date;
+                temp.PType = i.BILLPAY.PAYTYPE.PType;
+                temp.Total = i.Total;                
+
+                CUSTOMER custommer = db.CUSTOMERs.Find(i.BOOKING.Customer_id);
+
+
+            }
+
+
+            */
+
             return View(bILLs.ToList());
         }
 

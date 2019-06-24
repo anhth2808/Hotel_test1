@@ -27,6 +27,11 @@ namespace Hotel_test1.Controllers
         // GET: ROOMTYPEs
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
             return View(db.ROOMTYPEs.ToList());
         }
 
@@ -48,6 +53,10 @@ namespace Hotel_test1.Controllers
         // GET: ROOMTYPEs/Create
         public ActionResult Create()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 

@@ -1,16 +1,102 @@
 ﻿@model Hotel_test1.Models.BILL
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Thông tin chi tiết";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>BILL</h4>
+    <h4>Thông tin chi tiết</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BillPay_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillPay_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BILLPAY.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILLPAY.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Booking_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Booking_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.CUSTOMER.CustomerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.CUSTOMER.CustomerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.Room_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.Room_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.ROOM.ROOMTYPE.RType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.ROOM.ROOMTYPE.RType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RENT.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RENT.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.Check_in_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.Check_in_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BOOKING.Check_out_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOOKING.Check_out_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BILLPAY.PAYTYPE.PType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BILLPAY.PAYTYPE.PType)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Total)
         </dt>
@@ -19,33 +105,6 @@
             @Html.DisplayFor(model => model.Total)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BILLPAY.PayType_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BILLPAY.PayType_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BOOKING.Customer_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BOOKING.Customer_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RENT.RoomType_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RENT.RoomType_id)
-        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Bill_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

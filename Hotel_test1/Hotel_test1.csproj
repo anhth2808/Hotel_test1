@@ -216,6 +216,7 @@
     <Compile Include="Models\BILL.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillDetailViewModel.cs" />
     <Compile Include="Models\BILLPAY.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -272,6 +273,8 @@
   <ItemGroup>
     <Content Include="Content\admin\admin-script.js" />
     <Content Include="Content\admin\admin-style.css" />
+    <Content Include="Content\admin\login-script.js" />
+    <Content Include="Content\admin\login-style.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\ajax-loader.gif" />

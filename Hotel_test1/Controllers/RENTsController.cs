@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Hotel_test1.Models;
+using System.Globalization;
+using System.Threading;
 
 namespace Hotel_test1.Controllers
 {
@@ -26,6 +28,10 @@ namespace Hotel_test1.Controllers
         // GET: RENTs
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var rENTs = db.RENTs.Include(r => r.ROOMTYPE);
             return View(rENTs.ToList());
         }
@@ -48,6 +54,10 @@ namespace Hotel_test1.Controllers
         // GET: RENTs/Create
         public ActionResult Create()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             ViewBag.RoomType_id = new SelectList(db.ROOMTYPEs, "RoomType_id", "RType");
             return View();
         }
@@ -96,6 +106,15 @@ namespace Hotel_test1.Controllers
         {
             if (ModelState.IsValid)
             {
+                 /*
+                string td = String.Format("{0:dd/MM/yyyy}", rENT.To_Date);
+                string fd = String.Format("{0:dd/MM/yyyy}", rENT.From_Date);
+
+                DateTime date = DateTime.ParseExact(td, "MM/dd/yyyy", null);
+                rENT.To_Date = date;
+                date = DateTime.ParseExact(fd, "MM/dd/yyyy", null);
+                rENT.From_Date = date;
+               */
                 db.Entry(rENT).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

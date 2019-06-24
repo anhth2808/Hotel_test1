@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Danh sách loại phòng";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "RType", rowsPerPage: 5);
 }
 
@@ -21,10 +22,22 @@
             grid.Column("Bed", "Số giường"),
             grid.Column("MaxPerson", "Số người"),
             grid.Column("Size", "Diện tích"),
-            grid.Column("Chức năng", format: @<text>
-                @Html.ActionLink("Edit", "Edit", new { id=item.RoomType_id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.RoomType_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.RoomType_id })
+            grid.Column("", format: @<text>
+                <a href="/ROOMTYPEs/Edit/@item.RoomType_id">
+                    <i class='fas fa-edit' title='Edit' id='Edit'></i>
+                </a>
+                &nbsp;|&nbsp;
+                <a href="/ROOMTYPEs/Details/@item.RoomType_id">
+                    <i class='fas fa-list-alt' title='Details' id='Details'></i>
+                </a>
+                &nbsp;|
+                <form action="/ROOMTYPEs/Delete/@item.RoomType_id" method="POST" class="btn-delete">
+                    <input type="hidden" name="id" value="@item.RoomType_id" />
+                    @Html.AntiForgeryToken()
+                    <button type="submit" id="submit" class="btn btn-link btn-delete" onclick="return confirm('Bạn chắc chắn muốn xóa ?');">
+                        <i class="fas fa-trash-alt text-danger"></i>
+                    </button>
+                </form>
             </text>),
     }
 

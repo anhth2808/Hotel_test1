@@ -14,9 +14,22 @@ namespace Hotel_test1.Controllers
     {
         private HOTEL3Entities db = new HOTEL3Entities();
 
+        string createId()
+        {
+            var max = db.PAYTYPEs.ToList().Select(n => n.PayType_id).Max();
+            int id = int.Parse(max.Substring(2)) + 1;
+            string type = String.Concat("0", id.ToString());
+            return "PT" + type.Substring(id.ToString().Length - 1);
+        }
+
+
         // GET: PAYTYPEs
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View(db.PAYTYPEs.ToList());
         }
 
@@ -38,6 +51,10 @@ namespace Hotel_test1.Controllers
         // GET: PAYTYPEs/Create
         public ActionResult Create()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 
@@ -50,6 +67,7 @@ namespace Hotel_test1.Controllers
         {
             if (ModelState.IsValid)
             {
+                pAYTYPE.PayType_id = createId();
                 db.PAYTYPEs.Add(pAYTYPE);
                 db.SaveChanges();
                 return RedirectToAction("Index");

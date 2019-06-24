@@ -45,6 +45,10 @@ namespace Hotel_test1.Controllers
         // GET: ROOMs/Create
         public ActionResult Create()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             ViewBag.RoomType_id = new SelectList(db.ROOMTYPEs, "RoomType_id", "RType");
             return View();
         }

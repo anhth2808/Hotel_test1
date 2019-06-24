@@ -1,49 +1,89 @@
 ﻿@model Hotel_test1.Models.ADMIN
 
 @{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = null;
 }
 
 
+<!DOCTYPE html>
 
-@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
-{
-    <fieldset>
-        <legend>Mvc Simple Login Application Demo</legend>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/admin/login-style.css")">
 
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        @if (@ViewBag.Message != null)
-        {
-            <div style="border: 1px solid red">
-                @ViewBag.Message
-            </div>
-        }
-        <table>
-            <tr>
-                <td>@Html.LabelFor(a => a.Admin_id)</td>
-                <td>@Html.TextBoxFor(a => a.Admin_id)</td>
-                <td>@Html.ValidationMessageFor(a => a.Admin_id)</td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(a => a.password)
-                </td>
-                <td>
-                    @Html.PasswordFor(a => a.password)
-                </td>
-                <td>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+    {
+       
+
+        <!--
+     <fieldset>
+            <legend>Mvc Simple Login Application Demo</legend>
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @if (@ViewBag.Message != null)
+            {
+                <div style="border: 1px solid red">
+                    @ViewBag.Message
+                </div>
+            }
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Admin_id)</td>
+                    <td>@Html.TextBoxFor(a => a.Admin_id)</td>
+                    <td>@Html.ValidationMessageFor(a => a.Admin_id)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(a => a.password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(a => a.password)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </fieldset>
+        -->
+        <div class="login-page">
+            <div class="form">
+                <form action="/Admin/Login" method="post" class="login-form">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div style="border: 1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+
+                    <input name="Admin_id" id="Admin_id" type="text" placeholder="Account" />
+                    @Html.ValidationMessageFor(a => a.Admin_id)
+
+                    <input name="password" id="password" type="password" placeholder="Password" />
                     @Html.ValidationMessageFor(a => a.password)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Login" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </fieldset>
-}  
 
+
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+    } 
+
+    <script src="@Url.Content("~/Content/admin/login-script.js")"></script>
+</body>
+</html>

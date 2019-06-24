@@ -1,58 +1,40 @@
 ﻿@model IEnumerable<Hotel_test1.Models.RENT>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dánh sách giá phòng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "ROOMTYPE.RType", rowsPerPage: 5);
 }
 
-<h2>Index</h2>
+<div id="gridContent">
+    @grid.GetHtml(
+    tableStyle: "table table-bordered table-hover",
+    footerStyle: "grid-footer",
+    fillEmptyRows: true,
+    mode: WebGridPagerModes.Numeric,
+    alternatingRowStyle: "alternatingRowStyle",
+    columns: new[]
+    {
+            grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("ROOMTYPE.RType", "Loại phòng"),
+            grid.Column("Price", "Giá phòng"),
+            grid.Column("From_Date", "Từ ngày", format:@<text> @item.From_Date.ToString("dd/MM/yyyy")</text>),
+            grid.Column("To_Date", "Đến ngày", format: (@item) => @item.To_Date!=null? @item.To_Date.ToString("dd/MM/yyyy"):""),
+            grid.Column("IsActive", "Tình trạng", format: (@item) => @item.IsActive==true?"Đang sử dụng":"Không sử dụng"),
+            grid.Column("", format: @<text>
+                <a href="/RENTs/Edit/@item.Rent_id">
+                    <i class='fas fa-edit' title='Edit' id='Edit'></i>
+                </a>               
+                &nbsp;|
+                <form action="/RENTs/Delete/@item.Rent_id" method="POST" class="btn-delete">
+                    <input type="hidden"     name="id" value="@item.Rent_id" />
+                    @Html.AntiForgeryToken()
+                    <button type="submit" id="submit" class="btn btn-link btn-delete" onclick="return confirm('Bạn chắc chắn muốn xóa ?');">
+                        <i class="fas fa-trash-alt text-danger"></i>
+                    </button>
+                 </form>
+            </text>),
+    }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.From_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.To_Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ROOMTYPE.RType)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.From_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.To_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ROOMTYPE.RType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Rent_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Rent_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Rent_id })
-        </td>
-    </tr>
-}
-
-</table>
+    )
+</div>

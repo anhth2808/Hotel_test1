@@ -17,6 +17,10 @@ namespace Hotel_test1.Controllers
         // GET: BOOKINGs
         public ActionResult Index()
         {
+            if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var bOOKINGs = db.BOOKINGs.Include(b => b.CUSTOMER).Include(b => b.ROOM);
             return View(bOOKINGs.ToList());
         }
