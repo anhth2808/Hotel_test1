@@ -8,7 +8,9 @@
     ViewBag.Title = "Welcome To Deluxe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    var paytypeData = ViewBag.paytypeData as IEnumerable<Hotel_test1.Models.PAYTYPE>;
     var roomtypeData = ViewBag.roomtypeData as IEnumerable<Hotel_test1.Models.ROOMTYPE>;
+
 }
 
 <section class="home-slider owl-carousel">
@@ -51,7 +53,7 @@
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
                                     <label for="check_in_date">Ngày nhận phòng</label>
-                                    <input name="check_in_date" type="text" class="form-control checkin_date" placeholder="Check-in date">
+                                    <input name="check_in_date" type="text" class="form-control checkin_date" autocomplete="off" placeholder="Check-in date">
                                 </div>
                             </div>
                         </div>
@@ -59,7 +61,7 @@
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
                                     <label for="check_out_date">Ngày trả phòng</label>
-                                    <input name="check_out_date" type="text" class="form-control checkout_date" placeholder="Check-out date">
+                                    <input name="check_out_date" type="text" class="form-control checkout_date" autocomplete="off" placeholder="Check-out date">
                                 </div>
                             </div>
                         </div>
@@ -71,9 +73,9 @@
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                             <select name="roomtype" id="" class="form-control">
-                                                @foreach(var rt in roomtypeData)
+                                                @foreach (var rt in roomtypeData)
                                                 {
-                                                    <option value="">@rt.RType</option>
+                                                    <option value="@rt.RoomType_id">@rt.RType</option>
                                                 }                                                
                                             </select>
                                         </div>
@@ -183,108 +185,9 @@
         </div>
     </div>
 </section>
-
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Phòng</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-1.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-                        <p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-2.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-                        <p><span class="price mr-2">$20.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-3.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-                        <p><span class="price mr-2">$150.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-4.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Classic Room</a></h3>
-                        <p><span class="price mr-2">$130.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-5.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Superior Room</a></h3>
-                        <p><span class="price mr-2">$300.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="room">
-                    <a href="rooms.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(/images/room-6.jpg);">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">Luxury Room</a></h3>
-                        <p><span class="price mr-2">$500.00</span> <span class="per">per night</span></p>
-                        <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@{ 
+   Html.RenderAction("RenderRoomtype");
+}
 
 <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/images/bg_1.jpg);">
     <div class="container">
@@ -501,16 +404,51 @@
 
 
     <div class="modal" id="booking-form" style="display: @display;">
-        <form class="modal-content animate" action="/new" method="post">
+        <form class="modal-content animate" action="Test/Confirm" method="post">
             <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
             <div class="container">
-                <label for="dateTime"><b>Date</b></label>
-                <input class="datetimepicker form-control" type="text" name="dateTime" autocomplete="off">
-                <label for="note"><b>Note</b></label>
-                <input class="form-control" type="text" name="note" autocomplete="off">
-                <label for="cost"><b>Cost</b></label>
-                <input class="form-control" type="text" name="cost" autocomplete="off">
-                <button type="submit">Submit</button>
+                <input class="" type="hidden" name="room_id" value="@ViewBag.room_id">
+
+                <label for="customerLastName"><b>Họ</b></label>
+                <input class="form-control" type="text" name="customerLastName" autocomplete="off" required>
+
+                <label for="customerFirstName"><b>Tên</b></label>
+                <input class="form-control" type="text" name="customerFirstName" autocomplete="off" required>
+
+                <label for="tel"><b>Điện thoại</b></label>
+                <input class="form-control" type="text" name="tel" autocomplete="off" required>
+                
+                <label for="email"><b>Email</b></label>
+                <input class="form-control" type="text" name="email" autocomplete="off" required>
+
+                <label for="roomtype_input"><b>Loại phòng</b></label>
+                <input class="form-control" type="text" name="roomtype_input" value="@ViewBag.roomtype_input" readonly= "readonly" autocomplete="off">
+
+                <label for="check_in_date_input"><b>Ngày nhận phòng</b></label>
+                <input class="datetimepicker form-control" type="text" name="check_in_date_input" value="@ViewBag.check_in_date_input"  readonly= "readonly" autocomplete="off">
+                
+                <label for="check_out_date_input"><b>Ngày trả phòng</b></label>
+                <input class="form-control" type="text" name="check_out_date_input" value="@ViewBag.check_out_date_input" readonly= "readonly" autocomplete="off">
+                
+
+                <!-- paytype -->
+                <label><b>Phương thức thanh toán:&nbsp;</b></label>
+                <br />
+                @foreach (var pt in paytypeData)
+                {
+                    <input class="" type="radio" name="paytype" id="@pt.PayType_id" value="@pt.PType" required>
+                    <label for="@pt.PayType_id"><b>@pt.PType</b></label>
+                }
+                <br />
+
+                <label for="price"><b>Giá phòng</b></label>
+                <input class="form-control" type="text" name="price" value="@ViewBag.price" readonly= "readonly" autocomplete="off">
+
+                <label for="total"><b>Tổng tiền</b></label>
+                <input class="form-control" type="text" name="total" value="@ViewBag.total" readonly= "readonly" autocomplete="off">
+
+               
+                <button type="submit">Booking</button>
             </div>
         </form>
     </div>

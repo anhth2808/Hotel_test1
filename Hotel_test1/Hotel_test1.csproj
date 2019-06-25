@@ -477,6 +477,7 @@
     <Content Include="Views\CUSTOMERs\Details.cshtml" />
     <Content Include="Views\CUSTOMERs\Edit.cshtml" />
     <Content Include="Views\CUSTOMERs\Index.cshtml" />
+    <Content Include="Views\Test\RenderRoomtype.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
