@@ -478,6 +478,8 @@
     <Content Include="Views\CUSTOMERs\Edit.cshtml" />
     <Content Include="Views\CUSTOMERs\Index.cshtml" />
     <Content Include="Views\Test\RenderRoomtype.cshtml" />
+    <Content Include="Views\Test\Confirm.cshtml" />
+    <Content Include="Views\Test\ConfirmBillPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -392,13 +392,26 @@
 
 @{
     string display = "";
+    string alertDisplay = "";
     if (ViewBag.isExist == true)
     {
         display = "block";
-
+        alertDisplay = "none";
     }
-    else
+    else if (ViewBag.showAlert == true)
     {
+        display = "none";
+        alertDisplay = "block";
+
+        <div class="modal" id="alert" style="display: @alertDisplay;">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer"><span class="close" onclick="document.getElementById('alert').style.display = 'none'" title="Close">×</span></div>
+                <div class="container">
+                    <b>Rất tiêc không có phòng trong khoản thời gian này</b>
+                </div>
+            </form>
+        </div>
+    } else {
         display = "none";
     }
 
@@ -407,7 +420,9 @@
         <form class="modal-content animate" action="Test/Confirm" method="post">
             <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
             <div class="container">
-                <input class="" type="hidden" name="room_id" value="@ViewBag.room_id">
+                <input class="" type="hidden" name="room_id" value="@ViewBag.room_id" />
+                <input class="" type="hidden" name="roomtype_input" id="roomtype_input" value="@ViewBag.roomtype_input"  />
+
 
                 <label for="customerLastName"><b>Họ</b></label>
                 <input class="form-control" type="text" name="customerLastName" autocomplete="off" required>
@@ -421,8 +436,8 @@
                 <label for="email"><b>Email</b></label>
                 <input class="form-control" type="text" name="email" autocomplete="off" required>
 
-                <label for="roomtype_input"><b>Loại phòng</b></label>
-                <input class="form-control" type="text" name="roomtype_input" value="@ViewBag.roomtype_input" readonly= "readonly" autocomplete="off">
+                <label for="roomtype_show"><b>Loại phòng</b></label>
+                <input class="form-control" type="text" name="roomtype_show" value="@ViewBag.roomtype_show" readonly= "readonly" autocomplete="off">
 
                 <label for="check_in_date_input"><b>Ngày nhận phòng</b></label>
                 <input class="datetimepicker form-control" type="text" name="check_in_date_input" value="@ViewBag.check_in_date_input"  readonly= "readonly" autocomplete="off">
@@ -436,7 +451,7 @@
                 <br />
                 @foreach (var pt in paytypeData)
                 {
-                    <input class="" type="radio" name="paytype" id="@pt.PayType_id" value="@pt.PType" required>
+                    <input class="" type="radio" name="paytype" id="@pt.PayType_id" value="@pt.PayType_id" required>
                     <label for="@pt.PayType_id"><b>@pt.PType</b></label>
                 }
                 <br />
