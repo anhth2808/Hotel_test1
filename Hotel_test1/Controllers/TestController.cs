@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Hotel_test1.Models;
-
+using System.Net.Mail;
 
 namespace Hotel_test1.Controllers
 {
@@ -401,6 +401,9 @@ namespace Hotel_test1.Controllers
             db.BILLs.Add(mBill);
 
             db.SaveChanges();
+
+            SendEmail( mCustomer.CustomerLastName + " " + mCustomer.CustomerFirstName, mCustomer.CustomerTel, mCustomer.CustomerEmail, htmlMail(mBill, db.ROOMTYPEs.Find(roomtype_input).RType ,price));
+
             return RedirectToAction("ConfirmBillPay", new { id = mBill.Bill_id });            
         }
 
@@ -496,5 +499,131 @@ namespace Hotel_test1.Controllers
             string type = String.Concat("000", id.ToString());
             return "BP" + type.Substring(id.ToString().Length - 1);
         }
+
+
+        void SendEmail(string _name, string _phone, string _email, string _description)
+        {
+            string senderID = "banbanga12345@gmail.com";
+            string senderPassword = "gatigun1";
+            string result = "Email Sent Successfully";
+
+            string body =  _description;
+            
+            /*
+            string body = " " + _name + " has sent an email from " + _email;
+            body += "Phone : " + _phone;
+            body += _description;
+            */
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(_email);
+                mail.From = new MailAddress(senderID);
+                mail.Subject = "Hóa đơn book phòng Deluxe";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+                smtp.Credentials = new System.Net.NetworkCredential(senderID, senderPassword);
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                result = "problem occurred";
+                Response.Write("Exception in sendEmail:" + ex.Message);
+            }
+
+        }
+
+        String htmlMail(BILL mBill, string RType, int Price)
+        {
+            /*
+            don't khow why mbill contain null RENT, ROOM connect, can't using mbill to shows price, Rtype of bill              
+             */
+
+            String a = 
+              
+                 "   <div class='container'>  " + 
+                 "       <div class='row'>  " + 
+                 "           <div class='col-xs-12'>  " + 
+                 "               <div class='invoice-title'>  " +
+                 "                   <h2>Hóa đơn</h2><h3 class='pull-right'>" + mBill.Bill_id + "</h3>  " + 
+                 "               </div>  " + 
+                 "               <hr>  " + 
+                 "               <div class='row'>  " + 
+                 "                   <div class='col-xs-6'>  " + 
+                 "                       <address>  " + 
+                 "                           <strong>Hóa đơn tới:</strong><br>  " + 
+                 "                           " + mBill.BOOKING.CUSTOMER.CustomerLastName + " " + mBill.BOOKING.CUSTOMER.CustomerFirstName + "< br>  "  + 
+                 "                           " + mBill.BOOKING.CUSTOMER.CustomerTel + "<br>  " + 
+                 "                           " + mBill.BOOKING.CUSTOMER.CustomerEmail + "<br>  " + 
+                 "                       </address>  " + 
+                 "                   </div>  " + 
+                 "                     " + 
+                 "               </div>  " + 
+                 "               <div class='row'>  " + 
+                 "                   <div class='col-xs-6' > "  + 
+                 "                       <address>  " + 
+                 "                           <strong>Phương thức thanh toán:</strong><br>  " + 
+                 "                           " + mBill.BILLPAY.PAYTYPE.PType + "<br>  " +
+                 "                           Thời gian thanh toán: " + mBill.BILLPAY.Date.ToString("dd/MM/yyyy") + "<br>  " + 
+                 "                       </address>  " + 
+                 "                   </div>                 " + 
+                 "               </div>  " + 
+                 "           </div>  " + 
+                 "       </div>  " + 
+                 "     " + 
+                 "       <div class='row'>  " + 
+                 "           <div class='col-md-12'>  " + 
+                 "               <div class='panel panel-default'>  " + 
+                 "                   <div class='panel-heading'>  " + 
+                 "                       <h3 class='panel-title'><strong>Chi tiết Book:</strong></h3>  " + 
+                 "                   </div>  " + 
+                 "                   <div class='panel-body'>  " + 
+                 "                       <div class='table-responsive'>  " + 
+                 "                           <table class='table table-condensed'>  " + 
+                 "                               <thead>  " + 
+                 "                                   <tr>  " + 
+                 "                                       <td><strong>Số phòng</strong></td>  " + 
+                 "                                       <td class='text-center'><strong>Loại phòng</strong></td>  " + 
+                 "                                       <td class='text-center'><strong>Ngày nhận phòng</strong></td>  " + 
+                 "                                       <td class='text-center'><strong>Ngày trả phòng</strong></td>  " + 
+                 "                                       <td class='text-right'><strong>Giá 1 đêm</strong></td>  " + 
+                 "                                   </tr>  " + 
+                 "                               </thead>  " + 
+                 "                               <tbody>  " + 
+                 "     " + 
+                 "                                   <tr>  " + 
+                 "                                       <td>" + mBill.BOOKING.Room_id + "</td>  " +
+                 "                                       <td class='text-center'>" + RType + "</td>  " +
+                 "                                       <td class='text-center'>" + mBill.BOOKING.Check_in_date.ToString("dd/MM/yyyy") + "</td>  " + 
+                 "                                       <td class='text-center'>" + mBill.BOOKING.Check_out_date.ToString("dd/MM/yyyy") + "</td>  " +
+                 "                                       <td class='text-right'>" + Price + "</td>  " + 
+                 "                                   </tr>                                  " + 
+                 "                                    " + 
+                 "                                   <tr>  " + 
+                 "                                       <td class='no-line'></td>  " + 
+                 "                                       <td class='no-line'></td>  " + 
+                 "                                       <td class='no-line'></td>  " + 
+                 "                                       <td class='no-line text-center'><strong>Tổng cộng</strong></td>  " +
+                 "                                       <td class='no-line text-right'>" + mBill.Total + "</td>  " + 
+                 "                                   </tr>  " + 
+                 "                               </tbody>  " + 
+                 "                           </table>  " + 
+                 "                       </div>  " + 
+                 "                   </div>  " + 
+                 "               </div>  " + 
+                 "           </div>  " + 
+                 "       </div>  " + 
+                 "  </div>  ";
+                 
+            return a;
+        }
+
+
+
     }   
 }

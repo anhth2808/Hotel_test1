@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Danh sách phòng";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    var grid = new WebGrid(Model, canPage: true, defaultSort: "Room_id", rowsPerPage: 3);
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Room_id", rowsPerPage: 10);
 }
 
 <div id="gridContent" >
