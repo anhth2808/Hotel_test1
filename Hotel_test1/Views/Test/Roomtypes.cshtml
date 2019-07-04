@@ -38,7 +38,7 @@
                                 </a>
                                 <div class="text p-3 text-center">
                                     <h3 class="mb-3"><a href="./Roomtypedetail/@Html.DisplayFor(modelItem => item.RoomType_id)">@Html.DisplayFor(modelItem => item.RType)</a></h3>
-                                    <p><span class="price mr-2">$@Html.DisplayFor(modelItem => item.Price)</span> <span class="per">per night</span></p>
+                                    <p><span class="price mr-2">$@Html.DisplayFor(modelItem => item.Price)</span> <span class="per">/đêm</span></p>
                                     <ul class="list">
                                         <li><span>Người:</span> @Html.DisplayFor(modelItem => item.MaxPerson)</li>
                                         <li><span>Diện tích:</span> @Html.DisplayFor(modelItem => item.Size) m2</li>
@@ -46,7 +46,7 @@
                                         <li><span>Giường:</span> @Html.DisplayFor(modelItem => item.Bed)</li>
                                     </ul>
                                     <hr>
-                                    <p class="pt-1"><a href="./Roomtypedetail/@Html.DisplayFor(modelItem => item.RoomType_id)" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+                                    <p class="pt-1"><a href="./Roomtypedetail/@Html.DisplayFor(modelItem => item.RoomType_id)" class="btn-custom">Xem chi tiết <span class="icon-long-arrow-right"></span></a></p>
                                 </div>
                             </div>
                         </div>
@@ -55,6 +55,8 @@
                 </div>
             </div>
             <div class="col-lg-3 sidebar">
+                <!--
+                    
                 <div class="sidebar-wrap bg-light ftco-animate">
                     <h3 class="heading mb-4">Advanced Search</h3>
                     <form action="#">
@@ -159,6 +161,9 @@
                         </div>
                     </form>
                 </div>
+
+                -->
+                
             </div>
         </div>
     </div>

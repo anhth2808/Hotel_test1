@@ -17,7 +17,7 @@
     {
             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
             grid.Column("RType", "Loại phòng"),
-            grid.Column("Descriptions", "Mô tả"),
+            grid.Column("Descriptions", "Mô tả", style: "index-description"),
             grid.Column("Views", "View"),
             grid.Column("Bed", "Số giường"),
             grid.Column("MaxPerson", "Số người"),

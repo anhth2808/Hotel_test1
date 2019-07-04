@@ -3,9 +3,34 @@
 @{
     ViewBag.Title = "Danh sách hóa đơn";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    var grid = new WebGrid(Model, canPage: true, defaultSort: "BillPay_id", rowsPerPage: 5);
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Bill_id", rowsPerPage: 5);
+    string category = ViewBag.category;
 }
 
+
+    @using (Html.BeginForm("Index", "BILLs", FormMethod.Get))
+    {
+    <p>
+        
+
+                @Html.TextBox("SearchString")
+                <select name="category" id="category">
+        
+                    <option value="Bill_id" id="Bill_id">Mã bill</option>
+        
+                    <option value="CustomerLastName" id="CustomerLastName">Họ khách hàng</option>
+        
+                    <option value="CustomerFirstName" id="CustomerFirstName">Tên khách hàng</option>
+        
+                    <option value="RType" id="RType">Loại phòng</option>
+        
+                </select>
+        
+                <input type="submit" value="Tìm kiếm" />
+        
+            </p>
+
+    }
 
 
 
@@ -19,7 +44,7 @@
     columns: new[]
     {
             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
-            grid.Column("BillPay_id", "Mã bill"),
+            grid.Column("Bill_id", "Mã bill"),
             grid.Column("BILLPAY.Date", "Ngày thanh toán", format:@<text> @item.BILLPAY.Date.ToString("dd/MM/yyyy")</text>),
             grid.Column("BOOKING.CUSTOMER.CustomerLastName", "Họ"),
             grid.Column("BOOKING.CUSTOMER.CustomerFirstName", "Tên"),
@@ -96,3 +121,14 @@
 </table>
 
 -->
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var myParam = location.search.split('category=')[1];
+        if (myParam) {
+            var category = document.getElementById(myParam);
+            category.selected = "true";
+        }
+    </script>
+}

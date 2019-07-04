@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Dash";
+    ViewBag.Title = Session["AdminName"].ToString();
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     @if (Session["AdminName"] != null)
     {
         <p>
-            Welcome @Session["AdminName"].ToString();
+            Chào @Session["AdminName"].ToString()
         </p>
     }
 </fieldset>

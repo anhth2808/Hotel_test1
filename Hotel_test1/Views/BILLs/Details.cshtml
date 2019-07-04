@@ -46,7 +46,8 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <td><strong>Số phòng</strong></td>
+                                    <td><strong>Mã book</strong></td>
+                                    <td class="text-center"><strong>Số phòng</strong></td>
                                     <td class="text-center"><strong>Loại phòng</strong></td>
                                     <td class="text-center"><strong>Ngày nhận phòng</strong></td>
                                     <td class="text-center"><strong>Ngày trả phòng</strong></td>
@@ -56,7 +57,8 @@
                             <tbody>
 
                                 <tr>
-                                    <td>@Html.DisplayFor(model => model.BOOKING.Room_id)</td>
+                                    <td>@Html.DisplayFor(model => model.Booking_id)</td>
+                                    <td class="text-center">@Html.DisplayFor(model => model.BOOKING.Room_id)</td>
                                     <td class="text-center">@Html.DisplayFor(model => model.BOOKING.ROOM.ROOMTYPE.RType)</td>
                                     <td class="text-center">@Html.DisplayFor(model => model.BOOKING.Check_in_date)</td>
                                     <td class="text-center">@Html.DisplayFor(model => model.BOOKING.Check_out_date)</td>
@@ -64,6 +66,7 @@
                                 </tr>
 
                                 <tr>
+                                    <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>

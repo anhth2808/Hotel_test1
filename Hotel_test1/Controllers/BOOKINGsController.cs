@@ -15,13 +15,46 @@ namespace Hotel_test1.Controllers
         private HOTEL3Entities db = new HOTEL3Entities();
 
         // GET: BOOKINGs
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string category)
         {
             if (Session["AdminId"] == null || Session["AdminId"].ToString() == "")
             {
                 return RedirectToAction("Login", "Admin");
             }
+
             var bOOKINGs = db.BOOKINGs.Include(b => b.CUSTOMER).Include(b => b.ROOM);
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                if (!String.IsNullOrEmpty(category))
+                {
+                    ViewBag.category = category;
+
+                    switch (category)
+                    {
+                        case "Booking_id":
+                            bOOKINGs = bOOKINGs.Where(s => s.Booking_id.Contains(searchString));
+                            break;
+                        case "CustomerLastName":
+                            bOOKINGs = bOOKINGs.Where(s => s.CUSTOMER.CustomerFirstName.Contains(searchString));
+                            break;
+                        case "CustomerFirstName":
+                            bOOKINGs = bOOKINGs.Where(s => s.CUSTOMER.CustomerFirstName.Contains(searchString));
+                            break;
+                        case "RType":
+                            bOOKINGs = bOOKINGs.Where(s => s.ROOM.ROOMTYPE.RType.Contains(searchString));
+                            break;
+                        case "Room_id":
+                            bOOKINGs = bOOKINGs.Where(s => s.ROOM.Room_id.Contains(searchString));
+                            break;
+                    }
+                }
+            }
+
+
+
+
             return View(bOOKINGs.ToList());
         }
 
@@ -123,7 +156,15 @@ namespace Hotel_test1.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             BOOKING bOOKING = db.BOOKINGs.Find(id);
+            var s = db.BILLs.Where(u => u.Booking_id == bOOKING.Booking_id).ToList();
+
+            if (s != null && s.Count > 0)
+            {
+                db.BILLs.Remove(s[0]);
+            }
+
             db.BOOKINGs.Remove(bOOKING);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,4 +1,4 @@
- AOS.init({
+﻿ AOS.init({
  	duration: 800,
  	easing: 'slide'
  });
@@ -342,10 +342,10 @@
 
   $('.checkin_date, .checkout_date').datepicker({
 	  'format': 'dd/mm/yyyy',
-	  'autoclose': true
+	  'autoclose': true,
+	  language: 'vi'
 	});
-
-
+  
 
 
 })(jQuery);

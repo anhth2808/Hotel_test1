@@ -1,9 +1,10 @@
 ﻿body {
+    padding-left: 3px;
 }
 
 
 .index-description {
-    max-width: 50px;
+    width: 600px;
 }
 
 .detail-description {

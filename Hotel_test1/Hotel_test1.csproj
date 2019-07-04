@@ -294,6 +294,7 @@
     <Content Include="Content\fonts\fontawesome-all.min.js" />
     <Content Include="Content\js\aos.js" />
     <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-datepicker.vi.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\google-map.js" />
     <Content Include="Content\js\jquery-3.2.1.min.js" />
