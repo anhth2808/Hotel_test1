@@ -16,7 +16,6 @@ namespace Hotel_test1.Models
 
     public partial class BILL
     {
-
         public string Bill_id { get; set; }
         [DisplayName("Tổng tiền")]
         public Nullable<int> Total { get; set; }
@@ -26,7 +25,7 @@ namespace Hotel_test1.Models
         public string Rent_id { get; set; }
         [DisplayName("Mã booking")]
         public string Booking_id { get; set; }
-    
+
         public virtual BILLPAY BILLPAY { get; set; }
         public virtual BOOKING BOOKING { get; set; }
         public virtual RENT RENT { get; set; }

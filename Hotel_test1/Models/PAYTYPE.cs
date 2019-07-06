@@ -21,11 +21,12 @@ namespace Hotel_test1.Models
         {
             this.BILLPAYs = new HashSet<BILLPAY>();
         }
+
         [DisplayName("Mã phương thức")]
         public string PayType_id { get; set; }
         [DisplayName("Tên phương thức")]
         public string PType { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILLPAY> BILLPAYs { get; set; }
     }

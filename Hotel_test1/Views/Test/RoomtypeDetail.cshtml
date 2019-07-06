@@ -266,13 +266,13 @@
                 <input class="form-control" type="text" name="email" autocomplete="off" required>
 
                 <label for="roomtype_show"><b>Loại phòng</b></label>
-                <input class="form-control" type="text" name="roomtype_show" value="@ViewBag.roomtype_show" readonly="readonly" autocomplete="off">
+                <input class="form-control uneditable" type="text" name="roomtype_show" value="@ViewBag.roomtype_show" readonly="readonly" autocomplete="off">
 
                 <label for="check_in_date_input"><b>Ngày nhận phòng</b></label>
-                <input class="datetimepicker form-control" type="text" name="check_in_date_input" value="@ViewBag.check_in_date_input" readonly="readonly" autocomplete="off">
+                <input class="datetimepicker form-control uneditable" type="text" name="check_in_date_input" value="@ViewBag.check_in_date_input" readonly="readonly" autocomplete="off">
 
                 <label for="check_out_date_input"><b>Ngày trả phòng</b></label>
-                <input class="form-control" type="text" name="check_out_date_input" value="@ViewBag.check_out_date_input" readonly="readonly" autocomplete="off">
+                <input class="form-control uneditable" type="text" name="check_out_date_input" value="@ViewBag.check_out_date_input" readonly="readonly" autocomplete="off">
 
 
                 <!-- paytype -->
@@ -286,10 +286,10 @@
                 <br />
 
                 <label for="price"><b>Giá phòng</b></label>
-                <input class="form-control" type="text" name="price" value="@ViewBag.price" readonly="readonly" autocomplete="off">
+                <input class="form-control uneditable" type="text" name="price" value="@ViewBag.price" readonly="readonly" autocomplete="off">
 
                 <label for="total"><b>Tổng tiền</b></label>
-                <input class="form-control" type="text" name="total" value="@ViewBag.total" readonly="readonly" autocomplete="off">
+                <input class="form-control uneditable" type="text" name="total" value="@ViewBag.total" readonly="readonly" autocomplete="off">
 
 
                 <button type="submit">Booking</button>

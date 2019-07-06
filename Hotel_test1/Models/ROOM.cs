@@ -21,11 +21,12 @@ namespace Hotel_test1.Models
         {
             this.BOOKINGs = new HashSet<BOOKING>();
         }
+
         [DisplayName("Số phòng")]
         public string Room_id { get; set; }
         [DisplayName("Mã loại phòng")]
         public string RoomType_id { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BOOKING> BOOKINGs { get; set; }
         public virtual ROOMTYPE ROOMTYPE { get; set; }

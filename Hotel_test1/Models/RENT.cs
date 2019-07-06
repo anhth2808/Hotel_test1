@@ -41,7 +41,7 @@ namespace Hotel_test1.Models
 
         [DisplayName("Mã loại phòng")]
         public string RoomType_id { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL> BILLs { get; set; }
         public virtual ROOMTYPE ROOMTYPE { get; set; }

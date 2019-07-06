@@ -22,6 +22,7 @@ namespace Hotel_test1.Models
             this.BILLPAYs = new HashSet<BILLPAY>();
             this.BOOKINGs = new HashSet<BOOKING>();
         }
+
         [DisplayName("Mã khách hàng")]
         public string Customer_id { get; set; }
         [DisplayName("Tên")]
@@ -32,7 +33,7 @@ namespace Hotel_test1.Models
         public string CustomerTel { get; set; }
         [DisplayName("Email")]
         public string CustomerEmail { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILLPAY> BILLPAYs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

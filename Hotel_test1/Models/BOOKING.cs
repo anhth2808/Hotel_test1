@@ -21,7 +21,6 @@ namespace Hotel_test1.Models
         {
             this.BILLs = new HashSet<BILL>();
         }
-    
         public string Booking_id { get; set; }
 
         [DisplayName("Ngày nhận phòng")]
@@ -36,7 +35,7 @@ namespace Hotel_test1.Models
         public string Customer_id { get; set; }
         [DisplayName("Mã phòng")]
         public string Room_id { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL> BILLs { get; set; }
         public virtual CUSTOMER CUSTOMER { get; set; }
