@@ -1,0 +1,89 @@
+﻿@model Hotel_test1.Models.ROOMTYPE
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Thông tin chi tiết";
+    string[] listImg = Model.Images.Split(',');
+}
+
+
+
+<div>
+    <h4>Loại phòng <a href="/ROOMTYPEs/Edit/@Model.RoomType_id" class="btn btn-success">Chỉnh sửa</a></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RType)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.RType)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </dt>
+    
+        <dd class="detail-description">
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+    
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+
+        <dd class="photo">
+
+                @foreach (string img in listImg)
+                {
+                    <div class="gallery">
+                        <a target="_blank" href="~/images/@img">
+                            <img src="~/images/@img" alt="@img" width="600" height="400">
+                        </a>
+                        <!--
+                            <div class="desc">Add a description of the image here</div>
+                        -->
+                    </div>
+                }
+
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Bed)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.Bed)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPerson)
+        </dt>
+    
+        <dd>
+            @Html.DisplayFor(model => model.MaxPerson)
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+</div>
+

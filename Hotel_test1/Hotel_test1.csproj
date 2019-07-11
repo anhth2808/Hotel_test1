@@ -197,9 +197,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BILLsController.cs" />
+    <Compile Include="Controllers\BOOKINGsController.cs" />
+    <Compile Include="Controllers\CUSTOMERsController.cs" />
+    <Compile Include="Controllers\PAYTYPEsController.cs" />
+    <Compile Include="Controllers\RENTsController.cs" />
+    <Compile Include="Controllers\ROOMsController.cs" />
+    <Compile Include="Controllers\ROOMTYPEsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -211,6 +216,7 @@
     <Compile Include="Models\BILL.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BillDetailViewModel.cs" />
     <Compile Include="Models\BILLPAY.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -220,6 +226,7 @@
     <Compile Include="Models\CUSTOMER.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\HotelModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +257,7 @@
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoomtypeRentViewModel.cs" />
+    <Compile Include="Models\RoomtypeUploadModels.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -263,6 +271,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\admin-script.js" />
+    <Content Include="Content\admin\admin-style.css" />
+    <Content Include="Content\admin\login-script.js" />
+    <Content Include="Content\admin\login-style.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\ajax-loader.gif" />
@@ -279,8 +291,10 @@
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\fontawesome-all.min.js" />
     <Content Include="Content\js\aos.js" />
     <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-datepicker.vi.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\google-map.js" />
     <Content Include="Content\js\jquery-3.2.1.min.js" />
@@ -396,6 +410,7 @@
     <Content Include="Content\prepros-6.config" />
     <Content Include="Content\css\.DS_Store" />
     <Content Include="Content\js\.DS_Store" />
+    <Content Include="Content\fonts\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -419,37 +434,56 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Contact.cshtml" />
     <Content Include="Views\Test\Roomtypes.cshtml" />
     <Content Include="Views\Test\RoomtypeDetail.cshtml" />
+    <Content Include="Views\ROOMTYPEs\Create.cshtml" />
+    <Content Include="Views\ROOMTYPEs\Delete.cshtml" />
+    <Content Include="Views\ROOMTYPEs\Details.cshtml" />
+    <Content Include="Views\ROOMTYPEs\Edit.cshtml" />
+    <Content Include="Views\ROOMTYPEs\Index.cshtml" />
+    <Content Include="Views\PAYTYPEs\Create.cshtml" />
+    <Content Include="Views\PAYTYPEs\Delete.cshtml" />
+    <Content Include="Views\PAYTYPEs\Details.cshtml" />
+    <Content Include="Views\PAYTYPEs\Edit.cshtml" />
+    <Content Include="Views\PAYTYPEs\Index.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\ROOMs\Create.cshtml" />
+    <Content Include="Views\ROOMs\Delete.cshtml" />
+    <Content Include="Views\ROOMs\Details.cshtml" />
+    <Content Include="Views\ROOMs\Edit.cshtml" />
+    <Content Include="Views\ROOMs\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\BOOKINGs\Create.cshtml" />
+    <Content Include="Views\BOOKINGs\Delete.cshtml" />
+    <Content Include="Views\BOOKINGs\Details.cshtml" />
+    <Content Include="Views\BOOKINGs\Edit.cshtml" />
+    <Content Include="Views\BOOKINGs\Index.cshtml" />
+    <Content Include="Views\RENTs\Create.cshtml" />
+    <Content Include="Views\RENTs\Delete.cshtml" />
+    <Content Include="Views\RENTs\Details.cshtml" />
+    <Content Include="Views\RENTs\Edit.cshtml" />
+    <Content Include="Views\RENTs\Index.cshtml" />
+    <Content Include="Views\BILLs\Create.cshtml" />
+    <Content Include="Views\BILLs\Delete.cshtml" />
+    <Content Include="Views\BILLs\Details.cshtml" />
+    <Content Include="Views\BILLs\Edit.cshtml" />
+    <Content Include="Views\BILLs\Index.cshtml" />
+    <Content Include="Views\CUSTOMERs\Create.cshtml" />
+    <Content Include="Views\CUSTOMERs\Delete.cshtml" />
+    <Content Include="Views\CUSTOMERs\Details.cshtml" />
+    <Content Include="Views\CUSTOMERs\Edit.cshtml" />
+    <Content Include="Views\CUSTOMERs\Index.cshtml" />
+    <Content Include="Views\Test\RenderRoomtype.cshtml" />
+    <Content Include="Views\Test\Confirm.cshtml" />
+    <Content Include="Views\Test\ConfirmBillPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\fonts\" />
     <Folder Include="Content\scss\" />
   </ItemGroup>
   <ItemGroup>

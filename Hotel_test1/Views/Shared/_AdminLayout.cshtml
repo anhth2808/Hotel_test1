@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/open-iconic-bootstrap.min.css")">
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/owl.carousel.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/owl.carousel.min.css")">
+
+
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-datepicker.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/jquery.timepicker.css")">
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/admin/admin-style.css")">
+     
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/style.css")">
+
+
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="/Admin">Home</a></li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Phòng</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/ROOMs/Index">Danh sách phòng</a><a class="dropdown-item" href="/ROOMs/Create">Thêm phòng</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nhanvienMenu">Loại phòng</a>
+                    <div class="dropdown-menu" aria-labelledby="nhanvienMenu"><a class="dropdown-item" href="/ROOMTYPEs/Index">Danh sách loại phòng</a><a class="dropdown-item" href="/ROOMTYPEs/Create">Thêm loại phòng</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Giá phòng</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/RENTs/Index">Danh sách giá phòng</a><a class="dropdown-item" href="/RENTs/Create">Thêm giá phòng</a></div>
+                </div>
+            </li>            
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Phương thức thanh toán</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/PAYTYPEs/Index">Danh sách phương thức thanh toán</a><a class="dropdown-item" href="/PAYTYPEs/Create">Thêm phương thức thanh toán</a></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">BOOKING</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/BOOKINGs/Index">Danh sách BOOKING</a></div>
+                </div>
+            </li>            
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Hóa đơn</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/BILLs/Index">Danh sách hóa đơn</a></div>
+                </div>
+            </li>
+
+            <!--
+            <li class="nav-item">
+                <div class="dropdown show">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="chucvuMenu">Khách hàng</a>
+                    <div class="dropdown-menu" aria-labelledby="chucvuMenu"><a class="dropdown-item" href="/CUSTOMERs/Index">Danh sách phương khách hàng</a></div>
+                </div>
+            </li>    
+            -->
+        </ul>
+    </nav>
+
+
+
+    @RenderBody()
+
+
+    <script src="@Url.Content("~/Content/js/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery-migrate-3.0.1.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/popper.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/fonts/fontawesome-all.min.js")"></script>
+    
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.vi.js")"></script>
+    <script src="@Url.Content("~/Content/admin/admin-script.js")"></script>
+
+    <!--
+    <script src="@Url.Content("~/Content/js/main.js")"></script>        
+    -->
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

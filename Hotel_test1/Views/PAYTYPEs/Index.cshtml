@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Hotel_test1.Models.PAYTYPE>
+
+@{
+    ViewBag.Title = "Danh sách phương thức thanh toán";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PType)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PType)
+        </td>
+        <td>
+            <a href="/PAYTYPEs/Edit/@item.PayType_id">
+                <i class='fas fa-edit' title='Edit' id='Edit'></i>
+            </a>
+
+            &nbsp;|
+            <form action="/PAYTYPEs/Delete/@item.PayType_id" method="POST" class="btn-delete">
+                <input type="hidden" name="id" value="@item.PayType_id" />
+                @Html.AntiForgeryToken()
+                <button type="submit" id="submit" class="btn btn-link btn-delete" onclick="return confirm('Bạn chắc chắn muốn xóa ?');">
+                    <i class="fas fa-trash-alt text-danger"></i>
+                </button>
+            </form>          
+        </td>
+    </tr>
+}
+    
+</table>

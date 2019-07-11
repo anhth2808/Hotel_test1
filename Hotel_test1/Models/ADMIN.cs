@@ -16,5 +16,6 @@ namespace Hotel_test1.Models
     {
         public string Admin_id { get; set; }
         public string AdminName { get; set; }
+        public string password { get; set; }
     }
 }

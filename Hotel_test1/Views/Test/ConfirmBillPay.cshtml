@@ -1,0 +1,97 @@
+﻿@model Hotel_test1.Models.BILL
+
+@{
+    ViewBag.Title = "Xác nhận hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>About</span></p>
+                    <h1 class="mb-4 bread">Phòng khách sạn</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="invoice-title">
+                <h2>Hóa đơn</h2>
+                <br />
+                <h3 class="pull-right">@Html.DisplayFor(model => model.Bill_id)</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                        <strong>Hóa đơn tới:</strong><br>
+                        @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerLastName) @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerFirstName)<br>
+                        @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerTel)<br>
+                        @Html.DisplayFor(model => model.BOOKING.CUSTOMER.CustomerEmail)<br>
+                    </address>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <address>
+                        <strong>Phương thức thanh toán:</strong><br>
+                        @Html.DisplayFor(model => model.BILLPAY.PAYTYPE.PType)<br>
+                        Thời gian thanh toán: @Html.DisplayFor(model => model.BILLPAY.Date)<br>
+                    </address>
+                </div>               
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Chi tiết Book:</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Số phòng</strong></td>
+                                    <td class="text-center"><strong>Loại phòng</strong></td>
+                                    <td class="text-center"><strong>Ngày nhận phòng</strong></td>
+                                    <td class="text-center"><strong>Ngày trả phòng</strong></td>
+                                    <td class="text-right"><strong>Giá 1 đêm</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>@Html.DisplayFor(model => model.BOOKING.Room_id)</td>
+                                    <td class="text-center">@Html.DisplayFor(model => model.BOOKING.ROOM.ROOMTYPE.RType)</td>
+                                    <td class="text-center">@Html.DisplayFor(model => model.BOOKING.Check_in_date)</td>
+                                    <td class="text-center">@Html.DisplayFor(model => model.BOOKING.Check_out_date)</td>
+                                    <td class="text-right">@Html.DisplayFor(model => model.RENT.Price)</td>
+                                </tr>                                
+                               
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center"><strong>Tổng cộng</strong></td>
+                                    <td class="no-line text-right">@Html.DisplayFor(model => model.Total)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Hotel_test1.Models.BILL>
+
+@{
+    ViewBag.Title = "Danh sách hóa đơn";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Bill_id", rowsPerPage: 5);
+    string category = ViewBag.category;
+}
+
+
+    @using (Html.BeginForm("Index", "BILLs", FormMethod.Get))
+    {
+    <p>
+        
+
+                @Html.TextBox("SearchString")
+                <select name="category" id="category">
+        
+                    <option value="Bill_id" id="Bill_id">Mã bill</option>
+        
+                    <option value="CustomerLastName" id="CustomerLastName">Họ khách hàng</option>
+        
+                    <option value="CustomerFirstName" id="CustomerFirstName">Tên khách hàng</option>
+        
+                    <option value="RType" id="RType">Loại phòng</option>
+        
+                </select>
+        
+                <input type="submit" value="Tìm kiếm" />
+        
+            </p>
+
+    }
+
+
+
+<div id="gridContent">
+    @grid.GetHtml(
+    tableStyle: "table table-bordered table-hover",
+    footerStyle: "grid-footer",
+    fillEmptyRows: true,
+    mode: WebGridPagerModes.Numeric,
+    alternatingRowStyle: "alternatingRowStyle",
+    columns: new[]
+    {
+            grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("Bill_id", "Mã bill"),
+            grid.Column("BILLPAY.Date", "Ngày thanh toán", format:@<text> @item.BILLPAY.Date.ToString("dd/MM/yyyy")</text>),
+            grid.Column("BOOKING.CUSTOMER.CustomerLastName", "Họ"),
+            grid.Column("BOOKING.CUSTOMER.CustomerFirstName", "Tên"),
+            grid.Column("BOOKING.Room_id", "Số phòng"),
+            grid.Column("BOOKING.ROOM.ROOMTYPE.RType", "Loại phòng"),
+            grid.Column("Total", "Tổng tiền"),
+            grid.Column("", format: @<text>
+
+        <a href="/BILLs/Details/@item.Bill_id">
+            <i class='fas fa-list-alt' title='Details' id='Details'></i>
+        </a>
+        &nbsp;|
+        <form action="/BILLs/Delete/@item.Bill_id" method="POST" class="btn-delete">
+            <input type="hidden" name="id" value="@item.Bill_id" />
+            @Html.AntiForgeryToken()
+            <button type="submit" id="submit" class="btn btn-link btn-delete" onclick="return confirm('Bạn chắc chắn muốn xóa ?');">
+                <i class="fas fa-trash-alt text-danger"></i>
+            </button>
+        </form>
+            </text>),
+    }
+
+    )
+</div>
+
+<!--
+    
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BILLPAY.PayType_id)
+        </th>
+        <td>
+            @Html.DisplayNameFor(model => model.BOOKING.CUSTOMER.CustomerFirstName)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.BOOKING.CUSTOMER.CustomerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RENT.RoomType_id)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLPAY.PayType_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOOKING.CUSTOMER.CustomerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOOKING.CUSTOMER.CustomerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RENT.RoomType_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Bill_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Bill_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Bill_id })
+        </td>
+    </tr>
+}
+
+</table>
+
+-->
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var myParam = location.search.split('category=')[1];
+        if (myParam) {
+            var category = document.getElementById(myParam);
+            category.selected = "true";
+        }
+    </script>
+}

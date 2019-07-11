@@ -1,0 +1,51 @@
+﻿@model Hotel_test1.Models.BOOKING
+
+@{
+    ViewBag.Title = "Thông tin chi tiết";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BOOKING</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Check_in_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check_in_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Check_out_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Check_out_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUSTOMER.CustomerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUSTOMER.CustomerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROOM.RoomType_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROOM.RoomType_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Booking_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

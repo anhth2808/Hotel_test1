@@ -1,0 +1,27 @@
+﻿@model Hotel_test1.Models.ROOM
+
+@{
+    ViewBag.Title = "Thông tin chi tiết";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ROOM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ROOMTYPE.RType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROOMTYPE.RType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Room_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

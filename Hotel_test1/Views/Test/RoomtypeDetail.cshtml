@@ -2,15 +2,22 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/RoomtypeDetail.css")">
 }
 
+@using Hotel_test1.Models
 
 @model Hotel_test1.Models.ROOMTYPE
+
 @{
-    ViewBag.Title = "RoomtypeDetail";
+    ViewBag.Title = Model.RType;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    String images = @Html.DisplayFor(model => model.Images).ToString();
+
+    var paytypeData = ViewBag.paytypeData as IEnumerable<Hotel_test1.Models.PAYTYPE>;
+
+    String images = Model.Images;
     String[] listImg = images.Split(',');
 
+    // @Html.DisplayFor(model => model.Images).ToString();
 }
+
 
 <div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
     <div class="overlay"></div>
@@ -35,7 +42,7 @@
                     <div class="col-md-12 ftco-animate">
                         <div class="container">
                             <div class="btn btn-primary btn-lg add-new-report" id="add-report" role="button" title="Add new report" data-toggle="tooltip" data-placement="right">
-                                <span onclick="document.getElementById('booking-form').style.display = 'block'">
+                                <span onclick="document.getElementById('check-form').style.display = 'block'">
                                     Đặt phòng ngay
                                 </span>
                             </div>
@@ -61,8 +68,9 @@
                                 <li><span>View:</span> @Html.DisplayFor(model => model.Views)</li>
                                 <li><span>Giường:</span> @Html.DisplayFor(model => model.Bed)</li>
                             </ul>
-                        </div>                        
+                        </div>
                     </div>
+                    <!--
                     <div class="col-md-12 room-single ftco-animate mb-5 mt-4">
                         <h3 class="mb-4">Take A Tour</h3>
                         <div class="block-16">
@@ -73,6 +81,9 @@
                         </div>
                     </div>
 
+                    
+                        
+                    
                     <div class="col-md-12 properties-single ftco-animate mb-5 mt-4">
                         <h4 class="mb-4">Review &amp; Ratings</h4>
                         <div class="row">
@@ -112,45 +123,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
-                        <h4 class="mb-4">Available Room</h4>
-                        <div class="row">
-                            <div class="col-sm col-md-6 ftco-animate">
-                                <div class="room">
-                                    <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/room-1.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-search2"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3 text-center">
-                                        <h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-                                        <p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
-                                        <hr>
-                                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm col-md-6 ftco-animate">
-                                <div class="room">
-                                    <a href="rooms.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/room-2.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-search2"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3 text-center">
-                                        <h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-                                        <p><span class="price mr-2">$20.00</span> <span class="per">per night</span></p>
-                                        <hr>
-                                        <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    -->
+
 
                 </div>
             </div> <!-- .col-md-8 -->
+            
             <div class="col-lg-4 sidebar ftco-animate">
+                <!--
+                    
+                
                 <div class="sidebar-box">
                     <form action="#" class="search-form">
                         <div class="form-group">
@@ -226,23 +208,111 @@
                     <h3>Paragraph</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
                 </div>
+
+                -->
+
             </div>
         </div>
     </div>
 </section> <!-- .section -->
 
 
-<div class="modal" id="booking-form">
-    <form class="modal-content animate" action="/new" method="post">
-        <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
+@{
+    string display = "";
+    string alertDisplay = "";
+    if (ViewBag.isExist == true)
+    {
+        display = "block";
+        alertDisplay = "none";
+    }
+    else if (ViewBag.showAlert == true)
+    {
+        display = "none";
+        alertDisplay = "block";
+
+            <div class="modal" id="alert" style="display: @alertDisplay;">
+                <form class="modal-content animate" action="#">
+                    <div class="imgcontainer"><span class="close" onclick="document.getElementById('alert').style.display = 'none'" title="Close">×</span></div>
+                    <div class="container">
+                        <b>Rất tiêc không có phòng trong khoản thời gian này</b>
+                    </div>
+                </form>
+            </div>
+
+    } else
+    {
+        display = "none";
+    }
+
+
+    <div class="modal" id="booking-form" style="display: @display;">
+        <form class="modal-content animate" action="../Confirm" method="post">
+            <div class="imgcontainer"><span class="close" onclick="document.getElementById('booking-form').style.display = 'none'" title="Close">×</span></div>
+            <div class="container">
+                <input class="" type="hidden" name="room_id" value="@ViewBag.room_id" />
+                <input class="" type="hidden" name="roomtype_input" id="roomtype_input" value="@ViewBag.roomtype_input" />
+
+
+                <label for="customerLastName"><b>Họ</b></label>
+                <input class="form-control" type="text" name="customerLastName" autocomplete="off" required>
+
+                <label for="customerFirstName"><b>Tên</b></label>
+                <input class="form-control" type="text" name="customerFirstName" autocomplete="off" required>
+
+                <label for="tel"><b>Điện thoại</b></label>
+                <input class="form-control" type="text" name="tel" autocomplete="off" required>
+
+                <label for="email"><b>Email</b></label>
+                <input class="form-control" type="text" name="email" autocomplete="off" required>
+
+                <label for="roomtype_show"><b>Loại phòng</b></label>
+                <input class="form-control uneditable" type="text" name="roomtype_show" value="@ViewBag.roomtype_show" readonly="readonly" autocomplete="off">
+
+                <label for="check_in_date_input"><b>Ngày nhận phòng</b></label>
+                <input class="datetimepicker form-control uneditable" type="text" name="check_in_date_input" value="@ViewBag.check_in_date_input" readonly="readonly" autocomplete="off">
+
+                <label for="check_out_date_input"><b>Ngày trả phòng</b></label>
+                <input class="form-control uneditable" type="text" name="check_out_date_input" value="@ViewBag.check_out_date_input" readonly="readonly" autocomplete="off">
+
+
+                <!-- paytype -->
+                <label><b>Phương thức thanh toán:&nbsp;</b></label>
+                <br />
+                @foreach (var pt in paytypeData)
+                {
+                    <input class="" type="radio" name="paytype" id="@pt.PayType_id" value="@pt.PayType_id" required>
+                    <label for="@pt.PayType_id"><b>@pt.PType</b></label>
+                }
+                <br />
+
+                <label for="price"><b>Giá phòng</b></label>
+                <input class="form-control uneditable" type="text" name="price" value="@ViewBag.price" readonly="readonly" autocomplete="off">
+
+                <label for="total"><b>Tổng tiền</b></label>
+                <input class="form-control uneditable" type="text" name="total" value="@ViewBag.total" readonly="readonly" autocomplete="off">
+
+
+                <button type="submit">Booking</button>
+            </div>
+        </form>
+    </div>
+
+}
+
+
+<div class="modal" id="check-form">
+    <form class="modal-content animate" action="./@Model.RoomType_id" method="post">
+        <div class="imgcontainer"><span class="close" onclick="document.getElementById('check-form').style.display = 'none'" title="Close">×</span></div>
         <div class="container">
-            <label for="dateTime"><b>Date</b></label>
-            <input class="datetimepicker form-control" type="text" name="dateTime" autocomplete="off">
-            <label for="note"><b>Note</b></label>
-            <input class="form-control" type="text" name="note" autocomplete="off">
-            <label for="cost"><b>Cost</b></label>
-            <input class="form-control" type="text" name="cost" autocomplete="off">
-            <button type="submit">Submit</button>
+            <input type="hidden" name="roomtype" value="@Model.RoomType_id"/>
+            
+            <label for="check_in_date"><b>Ngày nhận phòng</b></label>
+            <input class="form-control checkin_date" type="text" name="check_in_date" autocomplete="off" placeholder="Check-in date">
+
+            <label for="check_out_date"><b>Ngày trả phòng</b></label>
+            <input class="form-control checkout_date" type="text" name="check_out_date" autocomplete="off" placeholder="Check-out date">
+
+            <button type="submit">Tìm kiếm</button>
         </div>
     </form>
 </div>

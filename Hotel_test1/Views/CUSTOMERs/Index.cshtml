@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Hotel_test1.Models.CUSTOMER>
+
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Customer_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_id })
+        </td>
+    </tr>
+}
+
+</table>
